@@ -1,0 +1,81 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[top=1in, bottom=1in, left=1.2in, right=1.2in]{geometry}
+
+\usepackage{url}
+\usepackage{epsfig}
+\usepackage{graphics}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage[numbers]{natbib}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{amsmath}
+\usepackage[numbib,nottoc]{tocbibind}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{multirow}
+
+% Hifenização
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\hyphenation{pos-ta-gem si-lá-bi-ca}
+
+\graphicspath{{pictures/}}
+
+\title{Trabalho de Organização das Indústrias:\\ Plano de Negócios de uma empresa de Drones}
+\author{
+	\centering
+	\hspace*{-0.5cm}
+	\scalebox{0.7}
+	{
+	    \begin{tabular}{cccccc}
+			\multicolumn{2}{c}{
+				\begin{tabular}[c]{@{}c@{}} Artur Lemos\\ arturblemos@poli.ufrj.br
+				\end{tabular}
+			} & \multicolumn{2}{c}{
+				\begin{tabular}[c]{@{}c@{}} Daniel Guimarães\\ danielmguimaraes@poli.ufrj.br
+				\end{tabular}
+			} & \multicolumn{2}{c}{
+				\begin{tabular}[c]{@{}c@{}} Fabricio Sander\\ fabriciosanderzubelli@poli.ufrj.br
+				\end{tabular}
+			} \\[0.3in]
+			\multicolumn{6}{c}{
+				\begin{tabular}{cc}
+					Ioav Lichtenstein & Thiago Lobo\\
+					ioav@poli.ufrj.br & thiagolobo@poli.ufrj.br
+				\end{tabular}
+			}
+		\end{tabular}
+	}
+}
+\date{}
+
+\pagestyle{fancy}
+\setlength{\headheight}{10pt}
+\fancyhf{}
+\lhead{Plano de Negócios - Organização das Indústrias}
+\rhead{Grupo Fly}
+\cfoot{\thepage}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\nocite{*}
+
+\input{sumario_executivo}
+\input{analise_mercado}
+\input{plano_de_gestao}
+\input{plano_marketing}
+\input{plano_operacional}
+\input{plano_financeiro}
+\input{conclusao}
+
+\bibliographystyle{unsrtnat}
+\bibliography{reflist}
+
+\end{document}
