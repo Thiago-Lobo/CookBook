@@ -1,0 +1,35 @@
+\newpage
+\noindent
+\vspace*{-2.0cm}
+\section*{\sectionformat <<nome>>}
+\addcontentsline{toc}{section}{<<nome>>}
+\vspace*{-0.1cm}
+\begin{aemulticol}[width=0.495\textwidth,height=0.545\textheight]
+	\begin{tabu} to 0.5\linewidth {X[l]X[r]}
+	   \textit{Serve <<serve>> pessoas} & \textit{<<kcal>> kcal}
+	\end{tabu}\\
+	\rule[0.5ex]{0.5\linewidth}{1pt}	
+	\vspace*{-0.3cm}
+	\subsection*{\subsectionformat Ingredientes}
+	\vspace*{-0.15cm}
+	\begin{tabu} to 0.5\linewidth {X[l]X[l]}
+	   <<ingredientes>>
+	\end{tabu}
+	\vspace*{-0.15cm}
+	\subsection*{\subsectionformat Modo de Preparo}
+	\vspace*{-0.15cm}
+	<<modo>>
+	\vspace*{-0.15cm}
+	\subsection*{\subsectionformat Dicas}
+	\vspace*{-0.15cm}
+	<<dicas>>
+	\vspace*{-0.15cm}
+	\subsection*{\subsectionformat História}
+	\vspace*{-0.15cm}
+	<<historia>>
+\end{aemulticol}
+\begin{tikzpicture}[remember picture, overlay]
+\node[anchor = south, inner sep = 0pt, outer sep = 0pt] at (current page.south){
+	\includegraphics[width=\paperwidth, height=0.45\paperheight]{<<pic>>}
+};
+\end{tikzpicture}

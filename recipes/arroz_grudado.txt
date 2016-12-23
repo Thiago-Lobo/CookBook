@@ -1,0 +1,40 @@
+\nome:
+Arroz Grudado
+
+\dc:
+salgado
+
+\serve:
+4
+
+\kcal:
+300
+
+\ingredientes:
+uma caneca de arroz
+um quarto de cebola
+três dentes de alho
+uma colher de sopa de azeite
+sal a gosto
+
+\dicas:
+Enquanto estiver esperando a água atingir o nível do arroz, prove-a com uma colher para ajustar o nível de sal caso seja necessário.
+
+\historia:
+Após anos de arroz grudento, resolvemos descobrir como se faz arroz solto.
+
+\modo:
+Colocar a água para ferver em uma panela.
+Picar a cebola e o alho em pequenos cubos.
+Colocar o azeite em uma panela e aquecer.
+Refogar inicialmente a cebola e em seguida adicionar o alho.
+Adicionar o arroz e mexer bem. Cuidado para não queimar.
+Adicionar a água fervente à mistura e mexer um pouco.
+Acrescentar o sal e mexer um pouco.
+Manter fogo médio para alto até a água atingir o nível do arroz.
+Deixar a panela meio fechada e o fogo de baixo para médio.
+Checar com um garfo o nível da água.
+O arroz estará pronto quanto houver muito pouca ou nenhuma água restante no fundo da panela.
+
+\index:
+0
