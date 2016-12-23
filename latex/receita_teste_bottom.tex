@@ -1,0 +1,17 @@
+\newpage
+\noindent
+\begin{tikzpicture}[remember picture, overlay]
+\node[anchor = north, inner sep = 0pt, outer sep = 0pt] at (current page.north) 
+{
+	\includegraphics[width=\paperwidth, height=0.45\paperheight]{cover.jpg}
+};
+\end{tikzpicture}
+\begin{minipage}[t][0.5\textheight][t]{\textwidth}
+	\vspace*{0.4\paperheight}
+	\section*{\sectionformat Nome da Receita}
+	\addcontentsline{toc}{section}{Nome da Receita}
+	\vspace*{-0.8cm}
+	\begin{multicols}{2}
+		\kant[1-3]
+	\end{multicols}
+\end{minipage}

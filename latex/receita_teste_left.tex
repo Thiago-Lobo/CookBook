@@ -1,0 +1,16 @@
+\newpage
+\noindent
+\begin{minipage}[t]{.5\linewidth}
+\section*{Sumário Executivo}
+\addcontentsline{toc}{section}{Sumário Executivo}
+\kant[1]
+\rule{\textwidth}{0.4pt}
+\kant[2]
+
+\end{minipage}
+\begin{tikzpicture}[remember picture, overlay]
+\node[anchor = north east, inner sep = 0pt, outer sep = 0pt] at (current page.north east) 
+{
+	\includegraphics[width=0.45\paperwidth,height=\paperheight]{cover.jpg}
+};
+\end{tikzpicture}

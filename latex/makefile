@@ -6,8 +6,6 @@ BUILDTEX=$(TEX) $(LATEXFLAGS) $(PROJECT).tex
 
 all: clean
 	 $(BUILDTEX)
-	 $(BIBTEX) $(PROJECT)
-	 $(BUILDTEX)
 	 $(BUILDTEX)
 	 make clean
 	
