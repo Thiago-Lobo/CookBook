@@ -1,4 +1,4 @@
-PROJECT=report
+PROJECT=cookbook
 TEX=pdflatex
 LATEXFLAGS+=	-file-line-error -halt-on-error -interaction nonstopmode
 BIBTEX=bibtex
