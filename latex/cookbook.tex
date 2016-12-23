@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt]{book}
+\documentclass[a4paper, 8pt]{book}
 \usepackage[margin=0.8cm, includefoot, includehead]{geometry}
 
 \usepackage{url}
@@ -51,6 +51,7 @@
 \usepackage{parskip}
 \usepackage[utf8]{inputenc}
 \usepackage{float}
+\usepackage{calc}
 \usepackage{subcaption}
 \usepackage[numbers]{natbib}
 \usepackage{algorithm}
@@ -67,10 +68,18 @@
 \usepackage[sfdefault,light]{roboto}  %% Option 'sfdefault' only if the base font of the document is to be sans serif
 \usepackage[T1]{fontenc}
 \usepackage{multicol}
+\usepackage{ragged2e}
+\usepackage{tabu}
 
 \usepackage[toc]{multitoc}
 \renewcommand*{\multicolumntoc}{2}
 % \setlength{\columnseprule}{0.5pt}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0cm}{0.1cm}{0cm}
+\titlespacing*{\subsection}
+{0cm}{0cm}{0cm}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -81,18 +90,83 @@
     urlcolor=black
 }
 
+% 
+\usepackage{environ}
+\usepackage{pgfkeys}
+\makeatletter
+\newlength{\ae@width}
+\newlength{\ae@hoffset}
+\newlength{\ae@topsep}
+\newlength{\ae@botsep}
+\newlength{\ae@colheight}
+\newlength{\ae@colsep}
+\newlength{\ae@colrulewidth}
+\pgfkeys{/ae/multi/columns/.cd,
+  width/.code=\setlength\ae@width{#1},
+  hoffset/.code=\setlength\ae@hoffset{#1},
+  topsep/.code=\setlength\ae@topsep{#1},
+  botsep/.code=\setlength\ae@botsep{#1},
+  height/.code=\setlength\ae@colheight{#1},
+  colsep/.code=\setlength\ae@colsep{#1},
+  colrulewidth/.code=\setlength\ae@colrulewidth{#1},
+}
+
+\NewEnviron{aemulticol}[1][]
+  {\pgfkeys{/ae/multi/columns/.cd,
+    topsep=0cm,
+    botsep=0ex,
+    hoffset=0in,
+    width=2in,
+    height=0in,
+    colsep=0.3cm,
+    colrulewidth=0.4pt,
+    #1}%%
+   \vspace{\ae@topsep}\par
+   \noindent
+   \hspace*{\ae@hoffset}%%
+   \makebox[0pt][l]{\ae@set@multi@cols}%%
+   \vspace{\ae@botsep}\par
+  }
+
+\def\ae@set@multi@cols{%%
+  \setbox0=\vbox{%%
+    \hsize=\ae@width
+    \BODY}%%
+  \splittopskip=0pt
+  \vbadness=10000\relax
+  \ae@build@column
+}
+
+\def\ae@build@column{%%
+  \setbox2=\vsplit0 to \ae@colheight 
+  \vtop{%%
+    \hrule height0pt 
+    \unvbox2
+  }%%
+  \ifvoid0\relax\else
+    \hspace{\dimexpr(\ae@colsep-\ae@colrulewidth)/2}%%
+    % \vrule width \ae@colrulewidth
+    \hspace{\dimexpr(\ae@colsep-\ae@colrulewidth)/2}%%
+    \expandafter\ae@build@column
+  \fi}  
+
+\makeatother
+% 
+
 \usepackage{tikz}
 \usetikzlibrary{calc}
 
 \usepackage{tocloft}
-
-\setlength{\cftbeforesecskip}{2pt}
+\setlength{\cftbeforesecskip}{0.1cm}
 
 \definecolor{section_color}{RGB}{227, 170, 84}
-\definecolor{other_color}{RGB}{125, 87, 68}
+\definecolor{subsection_color}{RGB}{125, 87, 68}
 
 \newcommand*{\sectioncolor}{section_color}
 \newcommand*{\sectionformat}{\color{\sectioncolor}}
+
+\newcommand*{\subsectioncolor}{subsection_color}
+\newcommand*{\subsectionformat}{\color{\subsectioncolor}}
 
 \graphicspath{{pictures/}}
 
@@ -111,19 +185,20 @@
 \title
 {
 	\vspace*{-12.8cm}
-	\scalebox{1.0}
+	\scalebox{1.2}
 	{
 		\textbf{E aí, como estamos de macarrão?}
 	}
-	\scalebox{0.7}
+	\scalebox{0.84}
 	{
 		Um guia de receitas que deram certo
 	}
 }
-\author{
-	\\[2.4cm]
+\author
+{
+	\\[3.0cm]
 	\centering
-	\scalebox{1.0}
+	\scalebox{1.2}
 	{
 	    \begin{tabular}{cc}
 			\multicolumn{2}{c}{
@@ -138,14 +213,6 @@
 }
 \date{}
 
-% \pagestyle{fancy}
-% % \setlength{\headheight}{10pt}
-% \fancyhead{}
-% \fancyfoot{}
-% % \lhead{Plano de Negócios - Organização das Indústrias}
-% % \rhead{Grupo Fly}
-% % \cfoot{\thepage}
-
 \begin{document}
 	\BgThispage
 	\maketitle
@@ -154,11 +221,11 @@
 	\vspace*{-3cm}
 	\tableofcontents
 	
-	\input{receita_teste_top}
-	% \input{receita_teste_left}
-	\input{receita_teste_bottom}
-	\input{receita_teste_top}
-	\input{receita_teste_bottom}
-	% \input{receita_teste_right}
+	\input{receita_teste_top_content}
+	\input{receita_teste_bottom_content}
+	\input{receita_teste_top_content}
+	\input{receita_teste_bottom_content}
+	\input{receita_teste_top_content}
+	\input{receita_teste_bottom_content}
 
 \end{document}
