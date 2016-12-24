@@ -2,7 +2,7 @@
 
 ## Sobre
 
-Um gerador de livros de receita em LaTeX automático. Escreva receitas simples em arquivos `.txt` e use o script para construir um belo `.pdf` baseado em LaTeX e compilando-as.
+Um gerador de livros de receita em LaTeX automático. Escreva receitas simples em arquivos `.txt` e use o script para construir um belo `.pdf` baseado em LaTeX compilando-as.
 
 ## Requerimentos
 
@@ -21,7 +21,7 @@ Um gerador de livros de receita em LaTeX automático. Escreva receitas simples e
 
 ## Escrevendo Receitas
 
-Toda receita é representada por um arquivo `.txt` e uma imagem (qualquer formato comum como `.png`, `.jpg` etc). É importante notar que TODA receita requer uma imagem. Imagens em formato paisagem são esteticamente melhores. Esses arquivos devem ser colocados na pasta `recipes` e devem seguir o seguinte padrão:
+Toda receita é representada por um arquivo `.txt` e uma imagem (qualquer formato comum como `.png`, `.jpg` etc). É importante notar que __TODA__ receita requer uma imagem. Imagens em formato paisagem são esteticamente melhores. Esses arquivos devem ser colocados na pasta `recipes` e devem seguir o seguinte padrão:
 
 ```
 \nome:

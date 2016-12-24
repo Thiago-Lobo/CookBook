@@ -22,7 +22,7 @@ top_recipe_template = "template_top.tex"
 cookbook_template = "template_cookbook.tex"
 
 nome_section = "nome"
-dc_section = "dc"
+ds_section = "ds"
 index_section = "index"
 serve_section = "serve"
 kcal_section = "kcal"
@@ -81,8 +81,8 @@ for count, recipe_file in enumerate(recipe_files):
 						error = 1
 						break
 					recipe[nome_section] = content[index + 1]
-				if section == dc_section:
-					recipe[dc_section] = content[index + 1]	
+				if section == ds_section:
+					recipe[ds_section] = content[index + 1]	
 				if section == ingredientes_section: # mandatory field
 					if index + 1 >= len(content) or content[index + 1].startswith("\\") or len(content[index + 1]) == 0:
 						print "Invalid recipe. Error detected in line {0}.".format(index + 2)

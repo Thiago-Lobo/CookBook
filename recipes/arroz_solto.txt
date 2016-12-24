@@ -1,7 +1,7 @@
 \nome:
 Arroz Solto
 
-\dc:
+\ds:
 salgado
 
 \serve:
