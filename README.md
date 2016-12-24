@@ -37,7 +37,7 @@ salgado
 300
 
 \ingredientes:
-igrediente 1
+ingrediente 1
 ingrediente 2
 ingrediente 3
 
