@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from os import listdir, makedirs
+from os import listdir, makedirs, remove
 from os.path import isfile, join, exists
 import collections
 import copy
@@ -243,5 +243,14 @@ print ">> Templates filled successfully."
 print ">> Now building the LaTeX project..."
 call(["make", "-C", latex_directory])
 
-copyfile('{0}cookbook.pdf'.format(latex_directory), "./cookbook.pdf")
+copyfile('{0}cookbook.pdf'.format(latex_directory), "./cookbook_uncompressed.pdf")
 rmtree(latex_directory)
+
+# GhostScript quality settings:
+# /screen
+# /ebook
+# /printer
+# /prepress
+# /default
+call(["gs", "-sDEVICE=pdfwrite", "-dCompatibilityLevel=1.4", "-dPDFSETTINGS=/printer", "-dNOPAUSE", "-dQUIET", "-dBATCH", "-sOutputFile=cookbook.pdf", "cookbook_uncompressed.pdf"])
+remove("./cookbook_uncompressed.pdf")

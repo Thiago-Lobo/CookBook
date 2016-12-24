@@ -8,12 +8,17 @@ Um gerador de livros de receita em LaTeX automático. Escreva receitas simples e
 
 + Python 2.7
 + LaTeX
++ Ghostscript
 
 ### Instalando LaTeX no macOS
 
 `brew cask install mactex`
 
 `brew cask install texmaker`
+
+### Instalando Ghostscript no macOS
+
+`brew install ghostscript`
 
 ### Executando o script
 
