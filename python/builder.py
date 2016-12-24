@@ -7,6 +7,7 @@ import collections
 import copy
 from shutil import copyfile
 from shutil import rmtree
+from PIL import Image
 
 # Run CLI commands
 from subprocess import call
@@ -33,7 +34,7 @@ spot_section = "spot"
 pic_section = "pic"
 
 recipe_files = [join(recipe_directory, f) for f in listdir(recipe_directory) if isfile(join(recipe_directory, f)) and "txt" in f]
-recipe_pics = [f for f in listdir(recipe_directory) if isfile(join(recipe_directory, f)) and not "txt" in f]
+recipe_pics = [f for f in listdir(recipe_directory) if isfile(join(recipe_directory, f)) and not "txt" in f and not "DS_Store" in f]
 recipes = {}
 
 if not exists(latex_directory):
@@ -136,13 +137,16 @@ for index in sorted_recipes:
 	ignore_lines = []
 	lines_to_write = []
 	target_list = []
+	crop_aspect_ratio = 1
 
 	if index % 2 == 0:
 		lines_to_write = copy.deepcopy(template_top_lines)
 		target_list = template_top_lines
+		crop_aspect_ratio = 133.65 / 210
 	else:
 		lines_to_write = copy.deepcopy(template_bottom_lines)
 		target_list = template_bottom_lines
+		crop_aspect_ratio = 123.255 / 210
 	
 	for counter, line in enumerate(target_list):
 		if "<<{0}>>".format(nome_section) in line:
@@ -174,7 +178,7 @@ for index in sorted_recipes:
 			modo = sorted_recipes[index][modo_section]
 			new_line = ""
 			for id, etapa in enumerate(modo):
-				new_line = new_line + "{0}. ".format(id + 1) + etapa
+				new_line = new_line + "\\textbf{{{0}.}} ".format(id + 1) + etapa
 				if not id + 1 >= len(modo):
 					new_line = new_line + "\\\\"
 				new_line = new_line + "\n"
@@ -208,8 +212,17 @@ for index in sorted_recipes:
 			f.write("\n")
 	f.close()
 
-	print ">> Copying {0}{1} to {2}{3}".format(recipe_directory, sorted_recipes[index]["pic"], pictures_directory, sorted_recipes[index]["pic"])
-	copyfile('{0}{1}'.format(recipe_directory, sorted_recipes[index]["pic"]), '{0}{1}'.format(pictures_directory, sorted_recipes[index]["pic"]))
+	# Crop image to fit latex slot without need for scaling
+	img = Image.open('{0}{1}'.format(recipe_directory, sorted_recipes[index]["pic"]))
+	width = img.size[0]
+	height = img.size[1]
+	new_height = crop_aspect_ratio * width	
+	img_crop = img.crop((0, height / 2 - new_height / 2, width, height / 2 + new_height / 2))
+	img_crop.save('{0}{1}'.format(pictures_directory, sorted_recipes[index]["pic"]))
+
+	# Simply copy images - no crop
+	# print ">> Copying {0}{1} to {2}{3}".format(recipe_directory, sorted_recipes[index]["pic"], pictures_directory, sorted_recipes[index]["pic"])
+	# copyfile('{0}{1}'.format(recipe_directory, sorted_recipes[index]["pic"]), '{0}{1}'.format(pictures_directory, sorted_recipes[index]["pic"]))
 
 for count, line in enumerate(template_cookbook):
 	if "<<{0}>>".format(spot_section) in line:
